@@ -17,14 +17,14 @@ trait ControllerTemplateTrait
             '<?php
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\\'.ucfirst($name).';
 use Illuminate\Http\Request;
          
 class ' . ucfirst($name) . 'Controller  extends Controller
 {
     public function index()
     {
-        return response()->json([\'data\' => ' . $name . '::query()->get()]);
+        return response()->json([\'data\' => ' . ucfirst($name) . '::query()->get()]);
     }
     
     public function show('.ucfirst($name).' $'.$name.')
@@ -34,7 +34,7 @@ class ' . ucfirst($name) . 'Controller  extends Controller
     
     public function store(Request $request)
     {
-        Post::query()->create($request->all());
+        '.ucfirst($name).'::query()->create($request->all());
     }
     
     public function update('. ucfirst($name) .' $'. strtolower($name) .', Request $request)
